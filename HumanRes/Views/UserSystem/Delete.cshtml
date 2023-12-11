@@ -1,0 +1,23 @@
+﻿@model WebApplication77.Models.UserSystem
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        <h1> @Model.Id</h1>
+        <h1> @Model.FullName</h1>
+        <h1> @Model.Email</h1>
+        <h1> @Model.UserName</h1>
+        <h1> @Model.Password</h1>
+        <h1> Are you sure to delete</h1>
+        @Html.ActionLink("Cancel", "index")
+        @Html.ActionLink("ok", "Delete" , new { id = Model.Id } )
+    </div>
+</body>
+</html>

@@ -1,0 +1,140 @@
+﻿@model WebApplication77.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>create</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        @using (@Html.BeginForm("create", "employee", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <h3> Employee </h3>
+            <br />
+
+            <div class="form-group row">
+                @Html.LabelFor(a => a.Id, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.Id, new { placeholder = "Id", @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.Id)
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(a => a.Name, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.Name, new { placeholder = "name", @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.Name)
+
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(a => a.Phone, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.Phone, new { placeholder = "Phone", @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.Phone)
+
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(a => a.Gender, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.LabelFor(a => a.Gender)
+                    <label> @Html.RadioButtonFor(a => a.Gender, new { placeholder = "Gender", @class = "form-control" }) Male  </label>
+                    <label> @Html.RadioButtonFor(a => a.Gender, new { @class = "form-control" }) Female  </label>
+                    @Html.ValidationMessageFor(a => a.Gender)
+                    <br />
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(a => a.Nationality, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.Nationality, new { placeholder = "Nationality", @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.Nationality)
+                </div>
+            </div>
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(a => a.BirthDay, new { @class = "col-sm-2 col-form-label", placeholder = "Nationality" })
+                <div class="col-sm-10">
+                    <input type="date" />
+                </div>
+                @Html.ValidationMessageFor(a => a.BirthDay)
+            </div>
+            <br />
+            <div class="form-group row">
+                @Html.LabelFor(a => a.NationalityNumber, new { @class = "col-sm-2 col-form-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(a => a.NationalityNumber, new { placeholder = "Nationality", @class = "form-control" })
+                    @Html.ValidationMessageFor(a => a.NationalityNumber)
+                </div>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <h3> Work Data </h3>
+                <br />
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.DateofContract, new { @class = "col-sm-2 col-form-label", placeholder = "DateofContract" })
+                    <div class="col-sm-10">
+                        <input type="date" />
+                    </div>
+                    @Html.ValidationMessageFor(a => a.DateofContract)
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Salary, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Salary, new { placeholder = "Salary", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Salary)
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Attendance, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Attendance, new { placeholder = "Attendance", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Attendance)
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Departure, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Departure, new { placeholder = "Departure", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Departure)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="save" class="btn-btn-primary" />
+                    <input type="submit" value="Edit" class="btn-group-xs" />
+                    <input type="submit" value="Delete" class="btn-btn-primary" />
+                </div>
+
+
+
+            </div>
+
+
+
+
+
+
+        }
+
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

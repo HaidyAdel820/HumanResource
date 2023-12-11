@@ -1,0 +1,35 @@
+﻿@using WebApplication77.Models ;
+@model IEnumerable<WebApplication77.Models.EmployeEndanceAndDeparture>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div> 
+        <table class="table-bordered table-striped table-striped">
+            <tr>
+                <td> Id </td>
+                <td> Attendance </td>
+                <td> departure </td>
+                <td> Date </td>
+                <td> Section </td>
+            </tr>
+            <tbody>
+                @foreach (EmployeEndanceAndDeparture item in Model)
+                {
+                <tr>
+                    <td> @item.Id </td>
+                    <td> @item.Attendance </td>
+                    <td> @item.departure </td>
+                    <td> @item.Date </td>
+                    <td> @item.Section </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

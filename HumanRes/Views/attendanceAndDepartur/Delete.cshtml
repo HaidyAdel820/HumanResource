@@ -1,0 +1,25 @@
+﻿@using WebApplication77.Models ;
+@model WebApplication77.Models.EmployeEndanceAndDeparture
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        <h1>  @Model.Id         </h1>
+        <h1>  @Model.Attendance </h1>
+        <h1>  @Model.departure   </h1>
+        <h1>  @Model.Date        </h1>
+        <h1>  @Model.Section     </h1>
+        <h1>  @Model.Employee   </h1>
+        <h1> Are you sure to delete </h1>
+        @Html.ActionLink("Cancel", "index")
+        @Html.ActionLink("ok", "Delete", new { id = Model.Id })
+
+    </div>
+</body>
+</html>

@@ -1,7 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 
-namespace HumanRes
+namespace WebApplication77
 {
     public class FilterConfig
     {

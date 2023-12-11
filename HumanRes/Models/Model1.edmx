@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HumanResourceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="Phone" Type="int" />
+          <Property Name="Gender" Type="bit" />
+          <Property Name="Nationality" Type="nvarchar" MaxLength="50" />
+          <Property Name="BirthDay" Type="datetime" />
+          <Property Name="NationalityNumber" Type="varchar" MaxLength="50" />
+          <Property Name="DateofContract" Type="datetime" />
+          <Property Name="Salary" Type="int" />
+          <Property Name="Attendance" Type="datetime" />
+          <Property Name="Departure" Type="datetime" />
+        </EntityType>
+        <EntityType Name="EmployeEndanceAndDeparture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Attendance" Type="int" />
+          <Property Name="departure" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpId" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeSalary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Section" Type="nvarchar" MaxLength="50" />
+          <Property Name="Presence" Type="int" />
+          <Property Name="absence" Type="int" />
+          <Property Name="ExtraHours" Type="int" />
+          <Property Name="Discount" Type="int" />
+          <Property Name="ExtraTotal" Type="int" />
+          <Property Name="ExtraDiscount" Type="int" />
+          <Property Name="Net" Type="int" />
+          <Property Name="Emp_Id" Type="int" />
+        </EntityType>
+        <EntityType Name="EmployeeSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Attendance" Type="int" />
+          <Property Name="Departure" Type="int" />
+          <Property Name="Vaction1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Vaction2" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmpId" Type="int" />
+        </EntityType>
+        <EntityType Name="OfficialHolidays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usergroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Page" Type="nvarchar" MaxLength="50" />
+          <Property Name="Insert" Type="bit" />
+          <Property Name="Select" Type="bit" />
+          <Property Name="Edit" Type="bit" />
+          <Property Name="Delete" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Powers" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_EmployeEndanceAndDeparture_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmployeEndanceAndDeparture" Type="Self.EmployeEndanceAndDeparture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeEndanceAndDeparture">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeSalary_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmployeeSalary" Type="Self.EmployeeSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeSalary">
+              <PropertyRef Name="Emp_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeSetting_Employee">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="0..1" />
+          <End Role="EmployeeSetting" Type="Self.EmployeeSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeSetting">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HumanResourceModelStoreContainer">
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeEndanceAndDeparture" EntityType="Self.EmployeEndanceAndDeparture" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSalary" EntityType="Self.EmployeeSalary" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmployeeSetting" EntityType="Self.EmployeeSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfficialHolidays" EntityType="Self.OfficialHolidays" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usergroup" EntityType="Self.Usergroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserSystem" EntityType="Self.UserSystem" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EmployeEndanceAndDeparture_Employee" Association="Self.FK_EmployeEndanceAndDeparture_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeEndanceAndDeparture" EntitySet="EmployeEndanceAndDeparture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeSalary_Employee" Association="Self.FK_EmployeeSalary_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeSalary" EntitySet="EmployeeSalary" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeSetting_Employee" Association="Self.FK_EmployeeSetting_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeSetting" EntitySet="EmployeeSetting" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HumanResourceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="EmployeEndanceAndDeparture">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Attendance" Type="Int32" />
+          <Property Name="departure" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpId" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="HumanResourceModel.FK_EmployeEndanceAndDeparture_Employee" FromRole="EmployeEndanceAndDeparture" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="EmployeeSetting">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Attendance" Type="Int32" />
+          <Property Name="Departure" Type="Int32" />
+          <Property Name="Vaction1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Vaction2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmpId" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="HumanResourceModel.FK_EmployeeSetting_Employee" FromRole="EmployeeSetting" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="OfficialHolidays">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="HumanResourceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="EmployeEndanceAndDeparture" EntityType="Self.EmployeEndanceAndDeparture" />
+          <EntitySet Name="EmployeeSetting" EntityType="Self.EmployeeSetting" />
+          <EntitySet Name="OfficialHolidays" EntityType="Self.OfficialHolidays" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="UserSystem" EntityType="HumanResourceModel.UserSystem" />
+          <EntitySet Name="Employee" EntityType="HumanResourceModel.Employee" />
+          <AssociationSet Name="FK_EmployeEndanceAndDeparture_Employee" Association="HumanResourceModel.FK_EmployeEndanceAndDeparture_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeEndanceAndDeparture" EntitySet="EmployeEndanceAndDeparture" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EmployeeSetting_Employee" Association="HumanResourceModel.FK_EmployeeSetting_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeSetting" EntitySet="EmployeeSetting" />
+          </AssociationSet>
+          <EntitySet Name="Usergroup" EntityType="HumanResourceModel.Usergroup" />
+          <EntitySet Name="EmployeeSalary" EntityType="HumanResourceModel.EmployeeSalary" />
+          <AssociationSet Name="FK_EmployeeSalary_Employee" Association="HumanResourceModel.FK_EmployeeSalary_Employee">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="EmployeeSalary" EntitySet="EmployeeSalary" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="UserSystem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Powers" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="Int32" />
+          <Property Name="Gender" Type="Boolean" />
+          <Property Name="Nationality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BirthDay" Type="DateTime" Precision="3" />
+          <Property Name="NationalityNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateofContract" Type="DateTime" Precision="3" />
+          <Property Name="Salary" Type="Int32" />
+          <Property Name="Attendance" Type="DateTime" Precision="3" />
+          <Property Name="Departure" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="EmployeEndanceAndDeparture" Relationship="HumanResourceModel.FK_EmployeEndanceAndDeparture_Employee" FromRole="Employee" ToRole="EmployeEndanceAndDeparture" />
+          <NavigationProperty Name="EmployeeSetting" Relationship="HumanResourceModel.FK_EmployeeSetting_Employee" FromRole="Employee" ToRole="EmployeeSetting" />
+          <NavigationProperty Name="EmployeeSalary" Relationship="HumanResourceModel.FK_EmployeeSalary_Employee" FromRole="Employee" ToRole="EmployeeSalary" />
+        </EntityType>
+        <Association Name="FK_EmployeEndanceAndDeparture_Employee">
+          <End Type="HumanResourceModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HumanResourceModel.EmployeEndanceAndDeparture" Role="EmployeEndanceAndDeparture" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeEndanceAndDeparture">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EmployeeSetting_Employee">
+          <End Type="HumanResourceModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HumanResourceModel.EmployeeSetting" Role="EmployeeSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeSetting">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Usergroup">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Page" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Insert" Type="Boolean" />
+          <Property Name="Select" Type="Boolean" />
+          <Property Name="Edit" Type="Boolean" />
+          <Property Name="Delete" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="EmployeeSalary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Section" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Presence" Type="Int32" />
+          <Property Name="absence" Type="Int32" />
+          <Property Name="ExtraHours" Type="Int32" />
+          <Property Name="Discount" Type="Int32" />
+          <Property Name="ExtraTotal" Type="Int32" />
+          <Property Name="ExtraDiscount" Type="Int32" />
+          <Property Name="Net" Type="Int32" />
+          <Property Name="Emp_Id" Type="Int32" />
+          <NavigationProperty Name="Employee" Relationship="HumanResourceModel.FK_EmployeeSalary_Employee" FromRole="EmployeeSalary" ToRole="Employee" />
+        </EntityType>
+        <Association Name="FK_EmployeeSalary_Employee">
+          <End Type="HumanResourceModel.Employee" Role="Employee" Multiplicity="0..1" />
+          <End Type="HumanResourceModel.EmployeeSalary" Role="EmployeeSalary" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="EmployeeSalary">
+              <PropertyRef Name="Emp_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HumanResourceModelStoreContainer" CdmEntityContainer="HumanResourceEntities">
+          <EntitySetMapping Name="EmployeEndanceAndDeparture">
+            <EntityTypeMapping TypeName="HumanResourceModel.EmployeEndanceAndDeparture">
+              <MappingFragment StoreEntitySet="EmployeEndanceAndDeparture">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="departure" ColumnName="departure" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSetting">
+            <EntityTypeMapping TypeName="HumanResourceModel.EmployeeSetting">
+              <MappingFragment StoreEntitySet="EmployeeSetting">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Vaction1" ColumnName="Vaction1" />
+                <ScalarProperty Name="Vaction2" ColumnName="Vaction2" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfficialHolidays">
+            <EntityTypeMapping TypeName="HumanResourceModel.OfficialHolidays">
+              <MappingFragment StoreEntitySet="OfficialHolidays">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HumanResourceModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserSystem">
+            <EntityTypeMapping TypeName="HumanResourceModel.UserSystem">
+              <MappingFragment StoreEntitySet="UserSystem">
+                <ScalarProperty Name="Powers" ColumnName="Powers" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="HumanResourceModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Departure" ColumnName="Departure" />
+                <ScalarProperty Name="Attendance" ColumnName="Attendance" />
+                <ScalarProperty Name="Salary" ColumnName="Salary" />
+                <ScalarProperty Name="DateofContract" ColumnName="DateofContract" />
+                <ScalarProperty Name="NationalityNumber" ColumnName="NationalityNumber" />
+                <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+                <ScalarProperty Name="Nationality" ColumnName="Nationality" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usergroup">
+            <EntityTypeMapping TypeName="HumanResourceModel.Usergroup">
+              <MappingFragment StoreEntitySet="Usergroup">
+                <ScalarProperty Name="Delete" ColumnName="Delete" />
+                <ScalarProperty Name="Edit" ColumnName="Edit" />
+                <ScalarProperty Name="Select" ColumnName="Select" />
+                <ScalarProperty Name="Insert" ColumnName="Insert" />
+                <ScalarProperty Name="Page" ColumnName="Page" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmployeeSalary">
+            <EntityTypeMapping TypeName="HumanResourceModel.EmployeeSalary">
+              <MappingFragment StoreEntitySet="EmployeeSalary">
+                <ScalarProperty Name="Emp_Id" ColumnName="Emp_Id" />
+                <ScalarProperty Name="Net" ColumnName="Net" />
+                <ScalarProperty Name="ExtraDiscount" ColumnName="ExtraDiscount" />
+                <ScalarProperty Name="ExtraTotal" ColumnName="ExtraTotal" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="ExtraHours" ColumnName="ExtraHours" />
+                <ScalarProperty Name="absence" ColumnName="absence" />
+                <ScalarProperty Name="Presence" ColumnName="Presence" />
+                <ScalarProperty Name="Section" ColumnName="Section" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

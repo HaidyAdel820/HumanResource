@@ -1,0 +1,39 @@
+﻿@model WebApplication77.Models.EmployeeSalary
+
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>create</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div>
+
+        @using (@Html.BeginForm("create", "employeeSalary", FormMethod.Post, new { @class = "form-horizontal" }))
+        {   
+            <div class="form-group">
+                <table class="table-bordered table-striped table-hover">
+                    <tr>
+                        <td> @Html.LabelFor(a => a.Name, new { @class = "control-label-md-3" }) </td>
+                        <td> @Html.LabelFor(a => a.Section, new { @class = "control-label-md-2" })</td>
+                        <td> @Html.LabelFor(a => a.Salary, new { @class = "control-label-md-4" })</td>
+                        <td> @Html.LabelFor(a => a.Presence, new { @class = "control-label-md-5" })</td>
+                        <td> @Html.LabelFor(a => a.absence, new { @class = "control-label-md-6" })</td>
+                        <td> @Html.LabelFor(a => a.ExtraHours, new { @class = "control-label-md-3" })</td>
+                        <td> @Html.LabelFor(a => a.ExtraDiscount, new { @class = "control-label-md-2" })</td>
+                        <td> @Html.LabelFor(a => a.ExtraTotal, new { @class = "control-label-md-4" })</td>
+                        <td> @Html.LabelFor(a => a.Discount, new { @class = "control-label-md-2" })</td>
+                        <td> @Html.LabelFor(a => a.Net, new { @class = "control-label-md-3" })</td>
+
+                    </tr>
+                </table>
+            </div>
+         }
+
+    </div>
+</body>
+</html>

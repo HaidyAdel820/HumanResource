@@ -1,0 +1,68 @@
+﻿@model WebApplication77.Models.OfficialHolidays
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+        <div>
+            @using (Html.BeginForm("Edit", "OfficialHolidays", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+            <div class="form-group">
+                <br />
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Name, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Name, new { placeholder = "Name", @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(a=>a.Name)
+                </div>
+                <br />
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Date, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        <input type="Date" name="Date" new { placeholder="Date" class="form-control" } />
+
+                    </div>
+                    @Html.ValidationMessageFor(a=>a.Date)
+                </div>
+                <br />
+                <div>
+                    <input type="submit" value="Add" />
+                </div>
+                <br />
+                <br />
+                <table class="table-bordered tab-content table-striped">
+                    <tr>
+                        <td>
+                            <h6> Name </h6>
+                            <hr>
+                            <div> Nasr 6 October </div>
+                            <div> Prophet birth </div>
+                        </td>
+                        <td>
+                            <h6> Date </h6>
+                            <hr>
+                            <div> 7/10/2021 </div>
+                            <div> 10/2/2021</div>
+                        </td>
+                    </tr>
+                </table>
+
+            </div>
+
+
+            }
+        </div>
+
+</body>
+</html>

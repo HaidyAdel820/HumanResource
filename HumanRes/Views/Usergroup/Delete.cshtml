@@ -1,0 +1,25 @@
+﻿@using WebApplication77.Models 
+@model WebApplication77.Models.Usergroup
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        <h1> @Model.Id </h1>
+        <h1> @Model.Page </h1>
+        <h1> @Model.Insert </h1>
+        <h1> @Model.Select </h1>
+        <h1> @Model.Edit </h1>
+        <h1> @Model.Delete </h1>
+        <h1> Are you sure delete </h1>
+        @Html.ActionLink("cancel","index")  
+        @Html.ActionLink("ok", "delete", new { id = Model.Id }) 
+
+    </div>
+</body>
+</html>

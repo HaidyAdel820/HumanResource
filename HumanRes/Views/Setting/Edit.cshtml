@@ -1,0 +1,44 @@
+﻿@using WebApplication77.Models 
+@model WebApplication77.Models.EmployeeSetting
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+
+</head>
+<body>
+    <div>
+        @using (@Html.BeginForm("Edit", "EmployeeSetting", FormMethod.Post, new { @class = "form-horizontal" }))
+         {
+
+            <br />
+            <br />
+            <label class="col-sm-2 col-form-label"> attendance  </label>
+            <input type="text" />
+            <br />
+            <br />
+            <label class="col-sm-2 col-form-label"> departure </label>
+            <input type="text" />
+            <br />
+            <br />
+            <label class="col-sm-2 col-form-label"> vaction1 </label>
+            @Html.DropDownList("id", ViewBag.id as SelectList);
+            <br />
+            <br />
+            <label class="col-sm-2 col-form-label"> vaction2 </label>
+            @Html.DropDownList("idWeekDay", ViewBag.idWeekDay as SelectList);
+            <br />
+            <br />
+            <button> Save </button>
+            <button> Edit </button>
+
+        
+
+        }
+    </div>
+
+</body>
+</html>

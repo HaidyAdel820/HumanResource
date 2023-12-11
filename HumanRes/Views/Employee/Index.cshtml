@@ -1,0 +1,61 @@
+﻿@using WebApplication77.Models;
+@model IEnumerable<WebApplication77.Models.Employee>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <a href="/Employee/create" class="btn btn-primary"> Employee Create </a>
+    </br>
+    <div class="container">
+        <table class="table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+
+                    <td> id </td>
+                    <td> Name </td>
+                    <td> Address </td>
+                    <td> Number </td>
+                    <td> gender </td>
+                    <td> nationality </td>
+                    <td> birthdate </td>
+                    <td> attendance </td>
+                    <td> salary </td>
+                    <td> departure </td>
+                    <td> national number </td>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (Employee item in Model)
+                {
+                    <tr>
+                        <td> @item.Id </td>
+                        <td> @item.Name </td>
+                        <td> @item.Address </td>
+                        <td> @item.NationalityNumber </td>
+                        <td> @item.Nationality </td>
+                        <td> @item.Phone </td>
+                        <td> @item.Salary </td>
+                        <td> @item.Gender </td>
+                        <td> @item.Attendance </td>
+                        <td> @item.Departure </td>
+                        <td> @item.BirthDay </td>
+                        <td> @item.DateofContract </td>
+
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+
+    </div>
+</body>
+</html>
