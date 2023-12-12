@@ -1,0 +1,35 @@
+﻿@using WebApplication77.Models;
+@model IEnumerable<WebApplication77.Models.OfficialHolidays>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div> 
+        <table class="table-bordered table-striped table-hover">
+            <tr>
+                <td> Id </td>
+                <td> Name </td>
+                <td> Date </td>
+            </tr>
+            @foreach (OfficialHolidays item in Model)
+             {
+             <thead>
+            <tr>
+                <td> @item.Id </td>
+
+                <td> @item.Name </td>
+
+                <td> @item.Date </td>
+            </tr>
+             
+             </thead>
+             }
+        </table>
+    </div>
+</body>
+</html>

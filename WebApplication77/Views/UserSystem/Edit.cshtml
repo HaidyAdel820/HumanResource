@@ -1,0 +1,97 @@
+﻿@model WebApplication77.Models.UserSystem
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    <div class="container">
+
+        @using (Html.BeginForm("Edit", "UserSystem", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <div class="from_group">
+
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Id, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Id, new { placeholder = "Id", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.Id)
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.FullName, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.FullName, new { placeholder = "FullName", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.FullName)
+
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.UserName, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.UserName, new { placeholder = "UserName", @class = "form-control" })
+                        @Html.ValidationMessageFor(a => a.UserName)
+                    </div>
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Email, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Email, new { placeholder = "Email", @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(a => a.Email)
+                </div>
+                <br />
+                <div class="form-group row">
+                    @Html.LabelFor(a => a.Password, new { @class = "col-sm-2 col-form-label" })
+                    <div class="col-sm-10">
+                        @Html.TextBoxFor(a => a.Password, new { placeholder = "Password", @class = "form-control" })
+                    </div>
+                    @Html.ValidationMessageFor(a => a.Password)
+
+                </div>
+
+                <br />
+                <input type="submit" value="save" class="btn-btn-primary" />
+                @Html.ActionLink("Cancel", "index", new { @class = "btn-btn-primary" })
+
+            </div>
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+    @Html.Hidden("initialValue")
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+
+
+
+</body>
+</html>

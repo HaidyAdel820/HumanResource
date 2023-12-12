@@ -1,0 +1,73 @@
+﻿@using WebApplication77.Models;
+@model IEnumerable<WebApplication77.Models.EmpSalaryData>
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+
+        @using (@Html.BeginForm("index", "employeeSalary", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <h1> employeeSalary </h1>
+            <div class="form-group">
+                <h3> Month </h3>
+                @Html.DropDownList("MonthId", ViewBag.MonthId as SelectList)
+                <h3> year </h3>
+                @Html.DropDownList("yearid", ViewBag.yearid as SelectList)
+                <input type="submit" name="search" />
+            </div>
+        }
+            <a href="/EmployeeSalary/create" class="btn btn-primary"> EmployeeSalary Create </a>
+            </br>
+            <div class="container">
+                <table class="table-bordered table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <td> id </td>
+                            <td> Name </td>
+                            <td> section </td>
+                            <td> salary </td>
+                            <td> presence </td>
+                            <td> absence </td>
+                            <td> Extra hours </td>
+                            <td> Extra total </td>
+                            <td> Extra Discount </td>
+                            <td> Net </td>
+                            <td> Discount </td>
+                            <td> emp_Id </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (EmpSalaryData item in Model)
+                        {
+                        <tr>
+                            <td> @item.EmpId </td>
+                            <td> @item.EmpSalaryId </td>
+                            <td> @item.Name </td>
+                            <td> @item.absence </td>
+                            <td> @item.ExtraHours </td>
+                            <td> @item.ExtraTotal </td>
+                            <td> @item.ExtraDiscount </td>
+                            <td> @item.Salary </td>
+                            <td> @item.Section </td>
+                            <td> @item.Discount </td>
+                            <td> @item.Presence </td>
+                            <td> @item.Net </td>
+
+                        </tr>
+                        }
+                    </tbody>
+
+                </table>
+
+
+
+            </div>
+</body>
+</html>

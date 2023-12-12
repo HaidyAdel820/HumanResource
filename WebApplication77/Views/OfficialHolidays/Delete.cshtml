@@ -1,0 +1,26 @@
+﻿@using WebApplication77.Models ;
+@model WebApplication77.Models.OfficialHolidays
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("delete", "OfficialHolidays", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+            <div>
+            <h1> @Model.Id </h1>
+            <h1> @Model.Name </h1>
+            <h1> @Model.Date </h1>
+            <h1> Are you sure to delete </h1>
+            @Html.ActionLink("Cancel", "index")
+            @Html.ActionLink("ok", "Delete", new { id = Model.Id })
+        </div>
+        }
+
+</body>
+</html>

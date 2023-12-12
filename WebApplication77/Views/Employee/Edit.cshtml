@@ -1,0 +1,102 @@
+﻿@model WebApplication77.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+    <div class="container">
+        @using (@Html.BeginForm("Edit", "employee", FormMethod.Post, new { @class = "form-horizontal" }))
+        {
+
+            <h2> Employee </h2>
+            <div class="form-group">
+                <h3> basic information </h3>
+                @Html.LabelFor(a => a.Id)
+
+                @Html.TextBoxFor(a => a.Id, new { @class = "control-label-md-2" })
+                @Html.ValidationMessageFor(a => a.Id)
+                <br />
+                <br />
+                @Html.LabelFor(a => a.Name)
+                @Html.TextBoxFor(a => a.Name, new { @class = "control-label-md-3" })
+                @Html.ValidationMessageFor(a => a.Name)
+
+                <br />
+                <br />
+
+                @Html.LabelFor(a => a.Phone)
+                @Html.TextBoxFor(a => a.Phone, new { @class = "control-label-md-4" })
+                @Html.ValidationMessageFor(a => a.Phone)
+
+                <br />
+                <br />
+                @Html.LabelFor(a => a.Gender)
+                <label> @Html.RadioButtonFor(a => a.Gender, new { @class = "control-label-md-4" }) Male  </label>
+                <label> @Html.RadioButtonFor(a => a.Gender, new { @class = "control-label-md-3" }) Female  </label>
+                @Html.ValidationMessageFor(a => a.Gender)
+
+                <br />
+                <br />
+                @Html.LabelFor(a => a.Nationality, new { @class = "control-label-md-4" })
+                @Html.TextBoxFor(a => a.Nationality)
+                @Html.ValidationMessageFor(a => a.Nationality)
+
+                <br />
+                <br />
+                @Html.LabelFor(a => a.BirthDay, new { @class = "control-label-md-4" }))
+                <input type="Date" />
+                @Html.ValidationMessageFor(a => a.BirthDay)
+                <br />
+                <br />
+                @Html.LabelFor(a => a.NationalityNumber, new { @class = "control-label-md-4" })
+                @Html.TextBoxFor(a => a.NationalityNumber)
+                @Html.ValidationMessageFor(a => a.NationalityNumber)
+
+            </div>
+            <div class="form-group">
+                <h3> Work Data</h3>
+
+                @Html.LabelFor(a => a.DateofContract, new { @class = "control-label-md-4" })
+                <input type="datetime" />
+                @Html.ValidationMessageFor(a => a.DateofContract)
+
+                <br />
+                <br />
+                @Html.LabelFor(a => a.Salary, new { @class = "control-label-md-3" })
+                @Html.TextBoxFor(a => a.Salary)
+                @Html.ValidationMessageFor(a => a.Salary)
+
+                <br />
+                <br />
+                @Html.LabelFor(a => a.Attendance, new { @class = "control-label-md-5" })
+                @Html.TextBoxFor(a => a.Attendance)
+                @Html.ValidationMessageFor(a => a.Attendance)
+
+                <br />
+                <br />
+                @Html.LabelFor(a => a.Departure, new { @class = "control-label-md-6" })
+                @Html.TextBoxFor(a => a.Departure)
+                @Html.ValidationMessageFor(a => a.Departure)
+
+
+                <input type="submit" value="save" class="btn-btn-primary" />
+                <input type="submit" value="Edit" class="btn-group-xs" />
+                <input type="submit" value="Delete" class="btn-btn-primary" />
+
+            </div>
+
+
+
+        }
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+
+</body>
+</html>

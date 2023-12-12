@@ -1,0 +1,38 @@
+﻿@using WebApplication77.Models 
+@model IEnumerable<EmployeeSetting>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div>
+        <table class="table-bordered tab-content table-striped">
+            <tr>
+                <td> Id          </td>
+                <td>  Attendance </td>
+                <td>  Departure  </td>
+                <td>  Vaction1   </td> 
+                <td> Vaction1   </td>
+            </tr>
+            @foreach (EmployeeSetting item in Model)
+            {
+                <tr>
+                    <td> @item.Id         </td>
+                    <td> @item.Attendance </td>
+                    <td> @item.Departure  </td>
+                    <td> @item.Vaction1   </td>
+                    <td> @item.Vaction2  </td>
+                </tr>
+            }
+
+
+           
+        </table>
+    </div>
+</body>
+</html>

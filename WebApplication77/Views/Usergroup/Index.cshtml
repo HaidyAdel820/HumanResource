@@ -1,0 +1,35 @@
+﻿@using WebApplication77.Models 
+@model IEnumerable<WebApplication77.Models.Usergroup>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div> 
+        <table class="table-bordered tab-content table-striped">
+            <tr>
+                <td> Id </td>
+                <td> Page </td>
+                <td>  Insert </td>
+                <td>  select </td>
+                <td>  Edit </td>
+                <td> Delete  </td>
+            </tr>
+            @foreach (Usergroup item in Model)
+             {
+                <tr>
+                    <td> @item.Id      </td>
+                    <td> @item.Page    </td>
+                    <td> @item.Insert  </td>
+                    <td> @item.Select  </td>
+                    <td> @item.Edit    </td>
+                    <td> @item.Delete  </td>
+                </tr>
+             }
+        </table>
+    </div>
+</body>
+</html>

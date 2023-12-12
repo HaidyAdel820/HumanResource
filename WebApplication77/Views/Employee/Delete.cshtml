@@ -1,0 +1,29 @@
+﻿@model WebApplication77.Models.Employee
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Delete</title>
+</head>
+<body>
+    <div>
+
+        <h1> @Model.Id</h1>
+        <h1> @Model.Name</h1>
+        <h1> @Model.Phone</h1>
+        <h1> @Model.Salary</h1>
+        <h1> @Model.Nationality</h1>
+        <h1> @Model.NationalityNumber</h1>
+        <h1> @Model.Attendance</h1>
+        <h1> @Model.BirthDay</h1>
+        <h1> @Model.Departure</h1>
+        <h1> @Model.DateofContract </h1>
+        <h1> Are you sure to delete </h1>
+        @Html.ActionLink("Cancel", "index")
+        @Html.ActionLink("ok", "Delete", new { id = Model.Id })
+
+    </div>
+</body>
+</html>
