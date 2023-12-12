@@ -12,6 +12,7 @@ namespace WebApplication77.Controllers
         // GET: Employee
         public ActionResult Index()
         {
+
             HumanResourceEntities human = new HumanResourceEntities();
             var lst = human.Employee.ToList();
             return View(lst);
